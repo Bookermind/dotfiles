@@ -1,6 +1,10 @@
 # My Dotfiles
 This directory contains my dotfiles managed locally via GNU Stow
 
+There is a subdirectory called "scripts" which is not managed by stow.
+
+This holds arch linux installation notes and package lists.
+
 ## Requirements
 
 ```
