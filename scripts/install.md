@@ -64,7 +64,7 @@ w (write partition table)
 #### EFI Partition
 
 ```
-mkfs.fat -F32 -nEFI /dev/vda1
+mkfs.fat -F32 -n EFI /dev/vda1
 ```
 
 #### BOOT Partition
@@ -197,18 +197,39 @@ Edit the ```/etc/mkinitcpio.conf``` file. The hooks array should look like the b
 HOOKS = (base udev autodetect modconf kms keyboard keymap consolefont block encrypt lvm2 filesystems fsck)
 ```
 Additionally place ```amdgpu``` in the modules array.   
-This is required to ensure my amd graphics card is available in early user space. This is a requirement for plymouth but also (at least on my system) seems to be a requirement for the SDDM display manager.   
+This is required to ensure my amd graphics card is available in early user space.   
+This is a requirement for plymouth but also (at least on my system) seems to be a requirement for the SDDM display manager.  
+
 Regenerate the initramfs   
 ```
 mkinitcpio -P
 ```
 ### GRUB bootloader (non secure boot)   
 We will first install grub for efi without considering secure boot (so that we can ensure the system boots without secure boot and that we haven't done anything wrong up to now)   
-Install the grun bootloader to the efi partition   
+Install the grub bootloader to the efi partition  
+
 ```
 grub-install --target=x86_64_efi --efi-directory=/boot/efi --bootloader-id=ARCHLINUX
 ```
+
 #### Configure grub to boot encrypted root   
-We need to find the UUID of the hard disk partition containing our root luks container (in this setup this is /dev/vda3 which contains teh cryptsys luks container)   
-We can either do this using ```blkid```, ```lsblk -f``` and writting the relevant UUID down or using a text editor like neovim with a two page layout.   
-Once we have the correct UUID we need to update and generate the grub configuration
+We need to find the UUID of the hard disk partition containing our root luks container (in this setup this is /dev/vda3 which contains the cryptsys luks container)   
+We can either do this using ```blkid```, ```lsblk -f``` and writing the relevant UUID down or using a text editor like neovim with a two tab layout.   
+Once we have the correct UUID we need to update and generate the grub configuration   
+
+```
+vim /etc/default/grub
+#Find GRUB_CMDLINE_LINUX: match -
+cryptdevice=UUID=[UUID]:cryptsys:allow-discards root=/dev/sys/root
+```
+
+Generate the grub configuration with
+
+```
+grub-mkconfig -o /boot/grub/grub.cfg
+
+```   
+### Root Password
+Set the root password with ```passwd```   
+
+## REBOOT
