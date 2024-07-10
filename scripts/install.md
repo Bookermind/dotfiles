@@ -84,7 +84,7 @@ cryptsetup luksOpen /dev/vda3 cryptsys
 pvcreate /dev/mapper/cryptsys
 vgcreate sys /dev/mapper/cryptsys
 #Create two logical volumes (swap with a size equal to the machine's ram (to allow for suspend) and the rest as root
-lvcreate -L12G sys -n swap
+lvcreate -L 12G sys -n swap
 lvcreate -l 100%FREE sys -n root
 ```
 Format the newly created filesystems   
@@ -93,7 +93,7 @@ Format the newly created filesystems
 mkswap /dev/mapper/sys-swap
 swapon /dev/mapper/sys-swap
 #Root
-mkfs.btrfs -L root -f /dev/mapper/sys-root
+mkfs.btrfs -L ROOT -f /dev/mapper/sys-root
 ```
 ##### BTRFS subvolumes for root filesystem  
 First mount the bare btrfs filesystem so we can create the needed directories and subvolumes   
@@ -108,22 +108,22 @@ btrfs subvolume create /mnt/@opt
 btrfs subvolume create /mnt/@srv
 btrfs subvolume create /mnt/@root
 btrfs subvolume create /mnt/@tmp
-btrfs subvolume create /mnt/@var/cache
-btrfs subvolume create /mnt/@var/spool
-btrfs subvolume create /mnt/@var/tmp
-btrfs subvolume create /mnt/@var/log
-btrfs subvolume create /mnt/@var/lib/machines
-btrfs subvolume create /mnt/@var/lib/docker
-btrfs subvolume create /mnt/@var/lib/portables
-btrfs subvolume create /mnt/@var/lib/libvirt
-btrfs subvolume create /mnt/@usr/local
-btrfs subvolume create /mnt/@/.snapshots
+btrfs subvolume create /mnt/@var-cache
+btrfs subvolume create /mnt/@var-spool
+btrfs subvolume create /mnt/@var-tmp
+btrfs subvolume create /mnt/@var-log
+btrfs subvolume create /mnt/@var-lib-machines
+btrfs subvolume create /mnt/@var-lib-docker
+btrfs subvolume create /mnt/@var-lib-portables
+btrfs subvolume create /mnt/@var-lib-libvirt
+btrfs subvolume create /mnt/@usr-local
+btrfs subvolume create /mnt/@.snapshots
 ```
 Create the folder hierarchy   
 ```
 umount /mnt
 mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@ /mnt
-mkdir /mnt/{home.opt,srv,root,tmp}
+mkdir /mnt/{home,opt,srv,root,tmp}
 mkdir /mnt/boot # (we can only create the efi directory once the actual boot partition is mounted)
 mkdir -p /mnt/var/{cache,spool,tmp,log}
 mkdir -p /mnt/var/lib/{machines,docker,portables,libvirt}
@@ -137,15 +137,15 @@ mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@opt /mnt/opt
 mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@srv /mnt/srv
 mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@root /mnt/root
 mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@tmp /mnt/tmp
-mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var/cache /mnt/var/cache
-mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var/spool /mnt/var/spool
-mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var/tmp /mnt/var/tmp
-mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var/log /mnt/var/log
-mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var/lib/machines /mnt/var/lib/machines
-mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var/lib/docker /mnt/var/lib/docker
-mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var/lib/portables /mnt/var/lib/portables
-mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var/lib/libvirt /mnt/var/lib/libvirt
-mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@usr/local /mnt/usr/local
+mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var-cache /mnt/var/cache
+mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var-spool /mnt/var/spool
+mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var-tmp /mnt/var/tmp
+mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var-log /mnt/var/log
+mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var-lib-machines /mnt/var/lib/machines
+mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var-lib-docker /mnt/var/lib/docker
+mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var-lib-portables /mnt/var/lib/portables
+mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@var-lib-libvirt /mnt/var/lib/libvirt
+mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@usr-local /mnt/usr/local
 mount /dev/mapper/sys-root -o compress=zstd,discard=async,subvol=@/.snapshots /mnt/.snapshots
 ```
 Mount remaining (non btrfs) filesystems   
@@ -159,11 +159,8 @@ At this point check the filesystem and mounts with ```lsblk```
 ## System installation  
 Use pacstrap to install the base operating system   
 ```
-#First refresh and sync the pacman application
-pacman-key --init
-pacman =Syy
 #Pacstrap installation
-pacstrap -K /mnt base base-devel linux-zen linux-firmware amd-ucode btrfs-progs lvm2 networkmanager neovim grub grub-btrfs git reflector man-db manpages texinfo efibootmgr sbctl
+pacstrap -K /mnt base base-devel linux-zen linux-firmware amd-ucode btrfs-progs lvm2 networkmanager neovim grub grub-btrfs git reflector man-db man-pages texinfo efibootmgr
 ```
 This will install a base system with no graphics or desktop environment - it will stil take a while so be patient!   
 ```
@@ -177,9 +174,9 @@ Chroot into the new system with ```arch-chroot /mnt```
 ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime #Set the localtime (UK for me)
 hwclock --systohc
 #Generate locales and set basic keymap, console and hostname
-vim /etc/locales.conf # Uncomment the relevant locales (for me both en_GB lines)
+vim /etc/locale.gen # Uncomment the relevant locales (for me both en_GB lines)
 locale-gen
-echo "LANG = en_GB.UTF-8" >> /etc/locale.conf
+echo "LANG=en_GB.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=uk" >> /etc/vconsole.conf
 # Set your hostname (here assumed to be "hostname")
 echo [hostname] >> /etc/hostname
