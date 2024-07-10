@@ -25,6 +25,11 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
 #Snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
@@ -42,6 +47,11 @@ zinit cdreplay -q
 bindkey -e #Set emacs mode
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+
+# ZSH by defaults output a ~ character when pressing delete, pageup or pagedown
+bindkey "^[[3~" delete-char 
+bindkey "^[[6~" down-line-or-beginning-search
+bindkey "^[[5~" up-line-or-beginning-search
 
 #History
 HISTSIZE=5000
