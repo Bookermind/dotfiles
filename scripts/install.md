@@ -72,6 +72,49 @@ mkfs.fat -F32 -nEFI /dev/vda1
 mkfs.ext2 -L BOOT /dev/vda2
 ```
 
-#### ROOT FileSystem
+#### ROOT FileSystem   
+First we need to format the create the luks encrypted volume, open it and create an lvm (for the actual filesystems)   
+```
+#Create Top level LUKS container
+cryptsetup luksFormat /dev/vda3
+cryptsetup luksOpen /dev/vda3 cryptsys
 
+#Create LVM on LUKS
+pvcreate /dev/mapper/cryptsys
+vgcreate sys /dev/mapper/cryptsys
+#Create two logical volumes (swap with a size equal to the machine's ram (to allow for suspend) and the rest as root
+lvcreate -L12G sys -n swap
+lvcreate -l 100%FREE sys -n root
+```
+Format the newly created filesystems   
+```
+#Swap
+mkswap /dev/mapper/sys-swap
+swapon /dev/mapper/sys-swap
+#Root
+mkfs.btrfs -L root -f /dev/mapper/sys-root
+```
+##### BTRFS subvolumes for root filesystem  
+First mount the bare btrfs filesystem so we can create the needed directories and subvolumes   
+```
+mount /dev/mapper/sys-root /mnt
+```
+Create the required subvolumes   
+```
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@opt
+btrfs subvolume create /mnt/@srv
+btrfs subvolume create /mnt/@root
+btrfs subvolume create /mnt/@tmp
+btrfs subvolume create /mnt/@var/cache
+btrfs subvolume create /mnt/@var/spool
+btrfs subvolume create /mnt/@var/tmp
+btrfs subvolume create /mnt/@var/lib/machines
+btrfs subvolume create /mnt/@var/lib/docker
+btrfs subvolume create /mnt/@var/lib/portables
+btrfs subvolume create /mnt/@var/lib/libvirt
+btrfs subvolume create /mnt/@usr/local
+btrfs subvolume create /mnt/@/.snapshots
+```
 
