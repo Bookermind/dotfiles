@@ -208,7 +208,10 @@ Install the grub bootloader to the efi partition
 ```
 grub-install --target=x86_64_efi --efi-directory=/boot/efi --bootloader-id=ARCHLINUX
 ```
-
+# If planning to implement secure boot using sbctl the grub install command is different   
+```
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ARCHLINUX --modules="tpm" --disable-shim-lock
+```
 #### Configure grub to boot encrypted root   
 We need to find the UUID of the hard disk partition containing our root luks container (in this setup this is /dev/vda3 which contains the cryptsys luks container)   
 We can either do this using ```blkid```, ```lsblk -f``` and writing the relevant UUID down or using a text editor like neovim with a two tab layout.   
