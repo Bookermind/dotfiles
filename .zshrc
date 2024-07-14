@@ -78,6 +78,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
+alias genssh='ssh-keygen -C "$(whoami)@$(uname -n)-$(date -I)" -t ed25519-sk'
 
 #Environment Variables
 SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh

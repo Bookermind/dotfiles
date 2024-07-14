@@ -6,8 +6,9 @@ This holds arch linux installation notes and package lists.
 ## Requirements
 
 ```
-pacman -S git stow
-apt install git stow
+pacman -S git stow zsh zoxide fzf neovim
+apt install git stow zsh zoxide fzf neovim
+
 ```
 
 ### Installation
