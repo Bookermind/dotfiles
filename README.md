@@ -13,7 +13,7 @@ apt install git stow
 ### Installation
 Check out the repo in your $HOME directory using git
 ```
-$ git clone git@github.com:Bookermind/dotfiles.git
+$ git clone https://github.com/Bookermind/dotfiles.git
 $ cd dotfiles
 ```
 
