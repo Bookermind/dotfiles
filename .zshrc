@@ -77,7 +77,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 #Aliases
 alias ls='ls -lah --color'
 alias vim='nvim'
-alian vi='nvim'
+alias vi='nvim'
 alias c='clear'
 alias genssh='ssh-keygen -C "$(whoami)@$(uname -n)-$(date -I)" -t ed25519-sk'
 
