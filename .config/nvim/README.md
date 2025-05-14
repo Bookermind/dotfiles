@@ -14,5 +14,6 @@ This repo (with my own versions) can be found [here](https://github.com/Bookermi
 - [X] vim-sleuth
 - [X] treesitter.nvimi
 - [X] treeesitter-textobjects.nvim
-
+- [X] which-key.nvim
+- [ ] fzflua
 
