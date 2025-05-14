@@ -4,7 +4,24 @@ This repo (with my own versions) can be found [here](https://github.com/Bookermi
 
 ## Folder Layout  
 
-## Options 
+## Options  
+### Indentation Options  
+Tabs are converted to spaces  
+Indentations are set to four spaces  
+SmartTab, SmartIndent, Autoindent and BreakIndent set to true  
+### Line Numbers and gutter  
+Line Numbers on  
+Relative Line Numbers on  
+Sign Column (gutter) always on  
+### Rendering  
+Tabs visible as "» "  
+Trailing Spaces as "·"  
+Non Breaking Spaces as "␣"  
+### Other  
+Searchs are case insensative  
+Mouse mode is on  
+The cursorline is shown  
+Scrolling preserves 10 lines above and below the current line  
 
 ## Modules and plugins   
 - [X] lazy.nvim
@@ -15,5 +32,8 @@ This repo (with my own versions) can be found [here](https://github.com/Bookermi
 - [X] treesitter.nvimi
 - [X] treeesitter-textobjects.nvim
 - [X] which-key.nvim
-- [ ] fzflua
+- [X] fzflua
+    - [X] fzf cli utility
+    - [X] ripgrep cli utility
+- [X] project.nvim
 

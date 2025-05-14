@@ -1,6 +1,7 @@
 return {
 	"ibhagwan/fzf-lua",
-	dependencies = {"nvim-tree/nvim-web-devicons"},
+--	dependencies = {"nvim-tree/nvim-web-devicons"},
+	dependencies = {"echasnovski/mini.icons"},
 	opts = {},
 	keys = {
 		{ 
@@ -17,6 +18,26 @@ return {
 			"<leader>fc",
 			function() require('fzf-lua').files({cwd=vim.fn.stdpath("config")}) end,
 			desc="[F]ind files in the neovim [C]onfig directory"
+		},
+		{
+			"<leader>fk",
+			function() require('fzf-lua').keymaps() end,
+			desc="[F]ind [K]eymaps"
+		},
+		{
+			"<leader>fb",
+			function() require('fzf-lua').builtin() end,
+			desc="[F]ind [B]uiltin fuzzy finders"
+		},
+		{
+			"<leader><leader>",
+			function() require('fzf-lua').buffers() end,
+			desc="Find existing buffers"
+		},
+		{
+			"<leader>fw",
+			function() require('fzf-lua').grep_cWORD() end,
+			desc="[F]ind current [W]ord"
 		}
 	}
 }
