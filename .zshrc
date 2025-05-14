@@ -90,3 +90,9 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/.p10k.zsh.
 [[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/simon/.dart-cli-completion/zsh-config.zsh ]] && . /home/simon/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
