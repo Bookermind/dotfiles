@@ -35,5 +35,9 @@ Scrolling preserves 10 lines above and below the current line
 - [X] fzflua
     - [X] fzf cli utility
     - [X] ripgrep cli utility
-- [X] project.nvim
-
+- [ ] project.nvim (this has been turned off as it doesn't play nicely with the softlinks from GNU stow)  
+- [X] LSP
+    - [X] Ensure to install npm on the command line otherwise cerain language servers will not install  
+- [X] blink-cpm.lua
+- [X] dressing.nvim
+- [ ] conform.nvim
