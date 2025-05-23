@@ -6,8 +6,8 @@ This holds arch linux installation notes and package lists.
 ## Requirements
 
 ```
-pacman -S git stow zsh zoxide fzf neovim
-apt install git stow zsh zoxide fzf neovim
+pacman -S git stow zsh zoxide fzf neovim npm ripgrep
+apt install git stow zsh zoxide fzf neovim npm ripgrep
 
 ```
 
@@ -21,4 +21,9 @@ $ cd dotfiles
 Use stow to place the dot files into the right locations within the .config directory of your home
 ```
 stow .
+```
+
+Update the font cache (required this repo contains local user nerd fonts)  
+```
+fc-cache -f -v
 ```
