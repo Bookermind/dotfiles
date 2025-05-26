@@ -5,16 +5,15 @@ return {
 	config = function()
 		require("catppuccin").setup({
 			flavour = "macchiato",
-			--			flavour = "frappe",
 			transparent_background = true,
 			show_end_of_buffer = true,
 			styles = {
 				comments = { "italic" }, -- Change comments to italics
-				conditionals = { "italic" },
+				conditionals = { "bold" },
 			},
 			integrations = {
 				treesitter = true,
-				--				fzf = true,
+				fzf = true,
 				markdown = true,
 			},
 		})

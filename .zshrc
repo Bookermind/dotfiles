@@ -83,9 +83,9 @@ alias genssh='ssh-keygen -C "$(whoami)@$(uname -n)-$(date -I)" -t ed25519-sk'
 
 #Environment Variables
 SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
-SUDO_EDITOR=/usr/bin/nvim
-VISUAL=/usr/bin/nvim
-EDITOR=/usr/bin/nvim
+SUDO_EDITOR=nvim
+VISUAL=nvim
+EDITOR=nvim
 
 #Shell integrations
 eval "$(fzf --zsh)"
