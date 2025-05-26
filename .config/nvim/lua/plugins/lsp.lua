@@ -206,7 +206,7 @@ return {
 			bashls = {},
 			marksman = {},
 			pylsp = {},
-			clangd = {},
+			harper_ls = {},
 			-- gopls = {},
 			-- pyright = {},
 			-- rust_analyzer = {},
