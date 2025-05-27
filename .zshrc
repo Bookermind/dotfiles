@@ -80,6 +80,7 @@ alias vim='nvim'
 alias vi='nvim'
 alias c='clear'
 alias genssh='ssh-keygen -C "$(whoami)@$(uname -n)-$(date -I)" -t ed25519-sk'
+alias sudoedit='EDITOR=nvim sudoedit'
 
 #Environment Variables
 SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh

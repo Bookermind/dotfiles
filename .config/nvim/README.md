@@ -29,7 +29,7 @@ Scrolling preserves 10 lines above and below the current line
 - [X] lualine.nvim
 - [X] oil.nvim
 - [X] vim-sleuth
-- [X] treesitter.nvimi
+- [X] treesitter.nvim
 - [X] treeesitter-textobjects.nvim
 - [X] which-key.nvim
 - [X] fzflua
@@ -38,6 +38,6 @@ Scrolling preserves 10 lines above and below the current line
 - [ ] project.nvim (this has been turned off as it doesn't play nicely with the softlinks from GNU stow)  
 - [X] LSP
     - [X] Ensure to install npm and unzip on the command line otherwise cerain language servers will not install  
-- [ ] blink-cpm.lua
+- [X] blink-cpm.lua
 - [X] dressing.nvim
 - [X] conform.nvim

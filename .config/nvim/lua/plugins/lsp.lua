@@ -10,7 +10,15 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		-- Useful status updates for LSP.
-		{ "j-hui/fidget.nvim", opts = {} },
+		{
+			"j-hui/fidget.nvim",
+			opts = {
+				notification = {
+					override_vim_notify = true,
+				},
+			},
+		},
+		"saghen/blink.cmp",
 	},
 	config = function()
 		-- Brief aside: **What is LSP?**
@@ -220,18 +228,26 @@ return {
 			--
 
 			lua_ls = {
-				-- cmd = { ... },
-				-- filetypes = { ... },
-				-- capabilities = {},
-				-- settings = {
-				--   Lua = {
-				--     completion = {
-				--       callSnippet = 'Replace',
-				--     },
-				--     -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-				--     -- diagnostics = { disable = { 'missing-fields' } },
-				--   },
-				-- },
+				settings = {
+					Lua = {
+						completion = {
+							callSnippet = "Replace",
+						},
+						diagnostics = {
+							globals = {
+								"vim",
+							},
+							disable = {
+								"missing-fields",
+							},
+							workspace = {
+								library = {
+									vim.api.nvim_get_runtime_file("", true),
+								},
+							},
+						},
+					},
+				},
 			},
 		}
 
