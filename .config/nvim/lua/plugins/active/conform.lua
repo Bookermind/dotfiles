@@ -8,8 +8,8 @@ return {
 			python = { "isort", "black" },
 			sql = { "sqlfmt" },
 			rust = { "rustfmt", lsp_format = "fallback" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
-			typescript = { "prettierd", "prettier", stop_after_first = true },
+			javascript = { "prettierd", "pretter", stop_after_first = true },
+			typescript = { "prettierd", "pretter", stop_after_first = true },
 		},
 		format_on_save = {
 			timeout_ms = 500,
@@ -17,8 +17,6 @@ return {
 		},
 	},
 	vim.keymap.set("n", "<leader>cf", function()
-		require("conform").format({
-			lsp_format = "fallback",
-		})
+		require("conform").format({ lsp_format = "fallback" })
 	end, { desc = "[C]ode [F]ormat" }),
 }

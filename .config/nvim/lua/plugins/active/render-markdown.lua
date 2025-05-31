@@ -4,8 +4,8 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		"echasnovski/mini.icons",
 	},
-	---@module 'render-markdown'
-	---@type render.md.UserConfig
+	---@module 2render-markdown'
+	---@type render.md.USerConfig
 	opts = {
 		rendermodes = { "n", "c", "t" },
 	},

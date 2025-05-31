@@ -8,14 +8,10 @@ return {
 			transparent_background = true,
 			show_end_of_buffer = true,
 			styles = {
-				comments = { "italic" }, -- Change comments to italics
+				comments = { "italic" },
 				conditionals = { "bold" },
 			},
-			integrations = {
-				treesitter = true,
-				fzf = true,
-				markdown = true,
-			},
+			integrations = {},
 		})
 		vim.cmd("colorscheme catppuccin")
 	end,
