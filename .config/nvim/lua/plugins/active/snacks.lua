@@ -13,5 +13,17 @@ return {
 				char = ":",
 			},
 		},
+		terminal = {
+			enabled = true,
+		},
+	},
+	keys = {
+		{
+			"<leader>tt",
+			function()
+				Snacks.terminal()
+			end,
+			desc = "[T]oggle [T]erminal",
+		},
 	},
 }
