@@ -272,6 +272,7 @@ return {
 			"black", --format python code
 			"yamlfmt", --format yaml code
 			"sqlfmt", --format SQL code
+            "fish-lsp", --format fish code
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

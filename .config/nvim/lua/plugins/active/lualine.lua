@@ -9,7 +9,7 @@ return {
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = "catppuccin",
+				theme = "dracula",
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = { "neo-tree" },
 				component_separators = { left = "", right = "" },
