@@ -14,6 +14,7 @@ $cmd_duration\
 $line_break\
 $character"""
 
+add_newline = false
 palette = 'dracula'
 
 [hostname]
@@ -23,10 +24,12 @@ trim_at = '.'
 
 [directory]
 style = 'green'
-format = '[$path ]($style)'
+format = '[$read_only]($read_only_style) [$path ]($style)'
 truncation_length = 3
 truncation_symbol = '…/'
 truncate_to_repo = false
+read_only = ''
+read_only_style = 'bold red'
 
 [directory.substitutions]
 'Documents' = '󰈙'
@@ -44,7 +47,8 @@ style = 'fg:red'
 format = '([$all_status$ahead_behind]($style) )'
 deleted = '✘\(${count}\) '
 untracked = '?\(${count}\) '
-diverged = '⇡\(${ahead_count}\) ⇣\(${behind_count}\) '
+ahead = '⇡\(${count}\) '  
+behind = '⇣\(${behind_count}\) '
 staged = '+\(${count}\) '
 modified = '!\(${count}\) '
 
