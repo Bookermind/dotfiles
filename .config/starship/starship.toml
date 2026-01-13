@@ -1,0 +1,113 @@
+format = """
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$python\
+$lua\
+$rust\
+$cpp\
+$package\
+$jobs\
+$cmd_duration\
+$line_break\
+$character"""
+
+add_newline = false
+palette = 'dracula'
+
+[hostname]
+ssh_only = true
+format = '[$hostname](bold purple) '
+trim_at = '.'
+
+[directory]
+style = 'green'
+format = '[$read_only]($read_only_style) [$path ]($style)'
+truncation_length = 3
+truncation_symbol = '…/'
+truncate_to_repo = false
+read_only = ''
+read_only_style = 'bold red'
+
+[directory.substitutions]
+'Documents' = '󰈙'
+'Downloads' = ' '
+'Music' = ' '
+'Pictures' = ' '
+
+[git_branch]
+style = 'fg:pink'
+symbol = ' '
+format = '[on](white) [$symbol$branch ]($style)'
+
+[git_status]
+style = 'fg:red'
+format = '([$all_status$ahead_behind]($style) )'
+deleted = '✘\(${count}\) '
+untracked = '?\(${count}\) '
+ahead = '⇡\(${count}\) '  
+behind = '⇣\(${behind_count}\) '
+staged = '+\(${count}\) '
+modified = '!\(${count}\) '
+
+[fill]
+symbol = '.'
+
+[python]
+style = 'cyan'
+symbol = ' '
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = true
+pyenv_prefix = ''
+
+[cpp]
+style = 'cyan'
+symbol = ' '
+format = '[${symbol}(${version} )]{$style}'
+
+[lua]
+style = 'cyan'
+symbol = ' '
+format = '[${symbol}(${version} )]($style)'
+
+[rust]
+style = 'orange'
+symbol = ' '
+format = '[${symbol}(${version} )]($style)'
+
+[package]
+symbol = '󰏗 '
+
+[docker_context]
+symbol = ' '
+style = 'cyan'
+format = '[$symbol]($style) $path'
+detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
+detect_extensions = ['Dockerfile']
+
+[jobs]
+symbol = ' '
+style = 'red'
+number_threshold = 1
+format = '[$symbol]($style)'
+
+[cmd_duration]
+min_time = 500
+style = 'fg:current_line'
+format = '[$duration]($style)'
+
+# Define Dracula color palette
+[palettes.dracula]
+background = "#282a36"
+current_line = "#44475a"
+foreground = "#f8f8f2"
+comment = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"

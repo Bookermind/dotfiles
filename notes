@@ -1,0 +1,1 @@
+pacman -S git stow zsh zoxide fzf neovim npm ripgrep eza starship kitty

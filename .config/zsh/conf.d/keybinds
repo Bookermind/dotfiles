@@ -1,0 +1,8 @@
+bindkey -e #Set emacs mode
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+#ZSH by default outputs a '~' char when pressing delete, pageup or pagedown
+bindkey "^[[3~" delete-char
+bindkey "^[[6~" down-line-or-beginning-search
+bindkey "^[[5~" up-line-or-beginning-search
