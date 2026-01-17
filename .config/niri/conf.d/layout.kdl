@@ -1,0 +1,21 @@
+layout {
+    gaps 10
+    center-focused-column "on-overflow"
+    always-center-single-column
+    empty-workspace-above-first
+    border {
+        width 2
+    }
+    focus-ring {
+        width 2
+    }
+    shadow {
+        on
+    }
+}
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+    tiled-state true
+    draw-border-with-background false
+}

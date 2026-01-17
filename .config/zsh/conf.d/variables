@@ -1,6 +1,16 @@
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_STATE_HOME="$HOME"/.local/state
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/gcr/ssh
 export SUDO_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR=nvim
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-export STARSHIP_CACHE=~/.config/starship/cache
+
+#XDG Compliance Environment Variables - Config
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgrep/config
+
+#XDG Compliance Environment Variables - Cache
+export STARSHIP_CACHE="$XDG_CACHE_HOME"/starship
