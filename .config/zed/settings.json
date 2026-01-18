@@ -1,0 +1,50 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "ssh_connections": [
+    {
+      "host": "jarvis",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/simon"
+          ]
+        }
+      ]
+    }
+  ],
+  "agent": {
+    "default_model": {
+      "provider": "ollama",
+      "model": "qwen2.5-coder:7b"
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "colorize_brackets": true,
+  "relative_line_numbers": "enabled",
+  "buffer_font_family": "VictorMono Nerd Font",
+  "language_models": {
+    "ollama": {
+      "api_url": "http://192.168.4.193:11434",
+    },
+  },
+  "icon_theme": "Catppuccin Mocha",
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 13.0,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Tokyo Night",
+  },
+}
