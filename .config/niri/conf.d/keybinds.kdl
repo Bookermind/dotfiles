@@ -14,10 +14,10 @@ binds {
     Mod+Shift+S { screenshot; }
     // === Application Keybinds ===
     //Open Terminal
-    Mod+Return hotkey-overlay-title="open Terminal" { spawn "kitty"; }
+    Mod+Return hotkey-overlay-title="open Terminal" { spawn "foot"; }
     //Open VSCode
     Mod+C hotkey-overlay-title="Open VSCode" { spawn "code"; }
-    
+
     // === Window Management Keybinds ===
     Mod+Q repeat=false { close-window; }
     Mod+F { maximize-column; }

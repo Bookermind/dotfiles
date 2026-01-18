@@ -47,7 +47,7 @@ alias jctl="journalctl -p 3 -xb"
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
 #SSH
-alias genssh='ssh-keygen -C "$(whoami)@$(uname -n)-$(date -I)" -t ed25519-sk'
+alias genssh='ssh-keygen -C "$(whoami)@$(uname -n)-$(date -I)" -t ed25519'
 
 #Editing
 alias vim='nvim'
