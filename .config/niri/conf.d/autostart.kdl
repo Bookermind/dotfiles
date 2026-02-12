@@ -1,3 +1,4 @@
 // Autostart applications
 spawn-sh-at-startup "/home/simon/.local/scripts/squeezelite.sh"
-spawn-at-startup "thunar --daemon"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "/usr/bin/pcmanfm-qt --daemon-mode"

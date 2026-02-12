@@ -7,6 +7,11 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "terminal": {
+    "shell": {
+      "program": "zsh"
+    }
+  },
   "ssh_connections": [
     {
       "host": "jarvis",
@@ -45,6 +50,6 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Tokyo Night",
+    "dark": "Noctalia Dark",
   },
 }
