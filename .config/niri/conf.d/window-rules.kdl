@@ -53,3 +53,8 @@ window-rule {
 debug {
     honor-xdg-activation-with-invalid-serial
 }
+
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}

@@ -219,6 +219,7 @@ recent-windows {
 include "conf.d/autostart.kdl"
 include "conf.d/keybinds.kdl"
 include "conf.d/window-rules.kdl"
+include "conf.d/layer-rules.kdl"
 include "conf.d/layout.kdl"
 include "./noctalia.kdl"
 
