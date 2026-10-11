@@ -73,11 +73,13 @@ main() {
     echo "==> Installing mise from copr"
     echo
     sudo dnf copr enable -y jdxcode/mise
-    sudo dnf install mise
+    sudo dnf install -y mise
     echo "==> Setting up RPM Fusion and Terra Repositories"
-    sudo dnf install -y "https://mirrors.rpmfusion.orb/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+    sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     sudo dnf install -y rpm-fusion-free-appstream-data rpm-fusion-nonfree-appstream-data
     sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+
+    sudo dnf -y update
 
     echo "==> Install secondary packages (from rpm fusion and terra)"
     echo
