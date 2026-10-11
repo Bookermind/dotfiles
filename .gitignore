@@ -1,0 +1,12 @@
+# Decrypted config files - generated at startup
+opencode/.config/opencode/opencode.json 
+pi/.pi/agent/models.json
+
+# Age Key
+age.key
+*.age
+
+# Editor and OS stuff
+.DS_Store
+*.swp
+*~
