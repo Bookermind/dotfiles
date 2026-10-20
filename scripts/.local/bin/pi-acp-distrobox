@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+exec distrobox-enter \
+  --name ai-pi \
+  --no-tty \
+  -- pi-acp

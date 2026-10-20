@@ -1,0 +1,121 @@
+{
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.productIconTheme": "icons-octicons",
+    "editor.fontFamily": "'JetBrainsMono Nerd Font'",
+    "editor.fontLigatures": true,
+    "workbench.iconTheme": "catppuccin-mocha",
+    "editor.bracketPairColorization.enabled": true,
+    "[python]": {
+        "editor.formatOnType": true,
+        "diffEditor.ignoreTrimWhiteSpace": false
+    },
+    "acpClient.agents": {
+        "opencode": {
+            "title": "OpenCode Distrobox",
+            "command": "distrobox",
+            "args": [
+                "enter",
+                "ai-opencode",
+                "--",
+                "opencode",
+                "acp"
+            ],
+            "enabled": true
+        }
+    },
+    "better-todo-tree.highlights.defaultHighlight": {
+        "icon": "alert",
+        "type": "text",
+        "foreground": "red",
+        "background": "white",
+        "opacity": 50,
+        "iconColour": "blue"
+    },
+    "better-todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "bookmark",
+            "type": "tag",
+            "foreground": "#32CD32",
+            "background": "#006400",
+            "opacity": 25,
+            "iconColour": "limegreen",
+            "gutterIcon": true
+        },
+        "FIXME": {
+            "icon": "beaker",
+            "type": "tag",
+            "foreground": "#FF4500",
+            "background": "#FF7F50",
+            "opacity": 25,
+            "iconColour": "coral",
+            "gutterIcon": true
+        },
+        "BUG": {
+            "icon": "bug",
+            "type": "tag",
+            "foreground": "#FF0000",
+            "background": "#B22222",
+            "opacity": 25,
+            "iconColour": "firebrick",
+            "gutterIcon": true
+        },
+        "NOTE": {
+            "icon": "note",
+            "type": "tag",
+            "foreground": "#1E90FF",
+            "background": "#87CEFA",
+            "opacity": 25,
+            "iconColour": "dodgerblue",
+            "gutterIcon": true
+        },
+        "IDEA": {
+            "icon": "light-bulb",
+            "type": "tag",
+            "foreground": "#00FFFF",
+            "background": "#00CED1",
+            "opacity": 25,
+            "iconColour": "cyan",
+            "gutterIcon": true
+        },
+        "HACK": {
+            "icon": "tools",
+            "type": "tag",
+            "foreground" : "#FF00FF",
+            "background": "#DA70D6",
+            "opacity": 25,
+            "iconColour": "magenta",
+            "gutterIcon": true
+        },
+        "[ ]": {
+            "icon": "issue-opened",
+            "type": "tag",
+            "foreground" : "#DEB887",
+            "background": "#FFE4C4",
+            "opacity": 25,
+            "iconColour": "Burlywood",
+            "gutterIcon": true
+        },
+        "[x]" : {
+            "icon": "issue-closed",
+            "type": "tag",
+            "foreground" : "#90EE90",
+            "background": "#ADFF2F",
+            "opacity": 25,
+            "iconColour": "lightgreen",
+            "gutterIcon": true
+        }
+    },
+    "better-todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "better-todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]",
+        "IDEA",
+        "NOTE"
+    ],
+    "workbench.secondarySideBar.showLabels": false
+}

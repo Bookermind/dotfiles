@@ -1,0 +1,7 @@
+{
+    "searxngBaseUrl": "http://192.168.4.193:8080",
+    "provider": "searxng",
+    "ssrf": {
+        "allowedRanges": ["192.168.4.193/32"]
+    }
+}

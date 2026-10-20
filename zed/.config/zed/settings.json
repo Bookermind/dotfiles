@@ -7,6 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "cli_default_open_behavior": "existing_window",
   "project_panel": {
     "dock": "left"
@@ -18,7 +26,7 @@
     "trust_all_worktrees": true
   },
   "ui_font_size": 16,
-  "buffer_font_size": 15,
+  "buffer_font_size": 13.0,
   "theme": {
     "mode": "system",
     "light": "One Light",
@@ -30,6 +38,31 @@
       "program": "/usr/bin/zsh",
       "args": ["-l"]
       }
+    }
+  },
+  "agent_servers": {
+    "opencode-distrobox": {
+      "default_config_options": {
+        "model": "opencode/mimo-v2.6-flash-free"
+      },
+      "type": "custom",
+      "command": "distrobox",
+      "args": [
+        "enter",
+        "ai-opencode",
+        "--",
+        "opencode",
+        "acp"
+      ]
+    },
+    "pi-distrobox": {
+      "default_config_options": {
+        "model": "nvidia/nvidia/nemotron-3-super-120b-a12b"
+      },
+      "type": "custom",
+      "command": "/home/simon/.local/bin/pi-acp-distrobox",
+      "args": [],
+      "env": {}
     }
   }
 }

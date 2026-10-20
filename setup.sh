@@ -112,7 +112,7 @@ setup_terra() {
 install_base_packages() {
     log "Installing base packages..."
     local pkgs=(
-        stow zsh zoxide fzf eza podman nodejs-bash-language-server
+        stow zsh zoxide fzf eza podman podman-docker podman-compose nodejs-bash-language-server
         bat hwinfo git mise starship zed pam-u2f pamu2fcfg fido2-tools
     )
     local to_install=()
@@ -181,8 +181,8 @@ stow_dotfiles() {
     log "Stowing dotfiles..."
     cd "$DOTFILES_DIR"
     # Use --adopt to handle existing files, then restow
-    stow -v -t ~ --adopt zsh starship bat systemd zed avatar opencode pi scripts distrobox 2>/dev/null \
-        || stow -v -t ~ --restow zsh starship bat systemd zed avatar opencode pi scripts distrobox
+    stow -v -t ~ --adopt zsh starship bat systemd zed avatar opencode pi scripts distrobox vscode 2>/dev/null \
+        || stow -v -t ~ --restow zsh starship bat systemd zed avatar opencode pi scripts distrobox vscode
     log "Dotfiles stowed"
 }
 
