@@ -1,6 +1,8 @@
 # Decrypted config files - generated at startup
 opencode/.config/opencode/opencode.json 
 pi/.pi/agent/models.json
+cred/.config/smb/backup.cred
+cred/.config/smb/muser.cred
 
 # Age Key
 age.key
