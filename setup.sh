@@ -63,6 +63,21 @@ decrypt_configs() {
     log "Config files decrypted"
 }
 
+decrypt_credentials() {
+    logs "Decrypting credential files..."
+    export SOPS_AGE_KEY="$AGE_KEY"
+
+    sops -d "$DOTFILES_DIR/cred/.config/smb/backup.enc.cred" \
+        > "$DOTFILES_DIR/cred/.config/smb/backup.cred"
+
+    sops -d "$DOTFILES_DIR/cred/.config/smb/muser.enc.cred" \
+        > "$DOTFILES_DIR/cred/.config/smb/muser.cred"
+
+    jq empty "$DOTFILES_DIR/cred/.config/smb/backup.cred"
+    jq empty "$DOTFILES_DIR/cred/.config/smb/muser.cred"
+    log "Credential files decrypted"
+}
+
 lock_vaultwarden() {
     if [[ -n "${RBW_SESSION:-}" ]]; then
         rbw lock --session "$RBW_SESSION" >/dev/null 2>&1 || true
@@ -181,8 +196,8 @@ stow_dotfiles() {
     log "Stowing dotfiles..."
     cd "$DOTFILES_DIR"
     # Use --adopt to handle existing files, then restow
-    stow -v -t ~ --adopt zsh starship bat systemd zed avatar opencode pi scripts distrobox vscode 2>/dev/null \
-        || stow -v -t ~ --restow zsh starship bat systemd zed avatar opencode pi scripts distrobox vscode
+    stow -v -t ~ --adopt zsh starship bat systemd zed avatar opencode pi scripts distrobox vscode cred 2>/dev/null \
+        || stow -v -t ~ --restow zsh starship bat systemd zed avatar opencode pi scripts distrobox vscode cred
     log "Dotfiles stowed"
 }
 
@@ -218,11 +233,12 @@ main() {
     setup_multimedia
     setup_gpu_drivers
     setup_fonts
-
+.conc
     # Phase 3: Secrets & dotfiles
     install_secrets_tools
     unlock_vaultwarden
     decrypt_configs
+    decrypt_credentials
     stow_dotfiles
     lock_vaultwarden
 

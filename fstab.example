@@ -1,0 +1,18 @@
+# Example FSTAB file -- taken from an ARCH installation
+# Add the Samba mount configurations (enxuring that folder and credential files exist)
+
+# <file system>             <mount point>  <type>  <options>  <dump>  <pass>
+UUID=8681-B7FA                                          /boot                   vfat    defaults,umask=0077                                                             0 2
+/dev/mapper/luks-5b944c68-b8b5-4c47-a57b-2d3224b2a653   /                       btrfs   subvol=/@,defaults,noatime,compress=zstd,commit=120                             0 0
+/dev/mapper/luks-5b944c68-b8b5-4c47-a57b-2d3224b2a653   /home                   btrfs   subvol=/@home,defaults,noatime,compress=zstd,commit=120                         0 0
+/dev/mapper/luks-5b944c68-b8b5-4c47-a57b-2d3224b2a653   /root                   btrfs   subvol=/@root,defaults,noatime,compress=zstd,commit=120                         0 0
+/dev/mapper/luks-5b944c68-b8b5-4c47-a57b-2d3224b2a653   /srv                    btrfs   subvol=/@srv,defaults,noatime,compress=zstd,commit=120                          0 0
+/dev/mapper/luks-5b944c68-b8b5-4c47-a57b-2d3224b2a653   /var/cache              btrfs   subvol=/@cache,defaults,noatime,compress=zstd,commit=120                        0 0
+/dev/mapper/luks-5b944c68-b8b5-4c47-a57b-2d3224b2a653   /var/tmp                btrfs   subvol=/@tmp,defaults,noatime,compress=zstd,commit=120                          0 0
+/dev/mapper/luks-5b944c68-b8b5-4c47-a57b-2d3224b2a653   /var/log                btrfs   subvol=/@log,defaults,noatime,compress=zstd,commit=120                          0 0
+tmpfs                                                   /tmp                    tmpfs   defaults,noatime,mode=1777                                                      0 0
+
+#Samba Mounts
+//192.168.4.118/Simon-Desk-Backups                      /mnt/smb/backup         cifs    _netdev,credentials=/home/simon/.config/smb/backup.cred,uid=1000,gid=1000       0 0
+//192.168.4.118/Photos-Proc                             /mnt/smb/photos/proc    cifs    _netdev,credentials=/home/simon/.config/smb/muser.cred,uid=1000,gid=1000        0 0
+//192.168.4.118/RAW-Photos                              /mnt/smb/photos/raw     cifs    _netdev,credentials=/home/simon/.config/smb/muser.cred,uid=1000,gid=1000        0 0
